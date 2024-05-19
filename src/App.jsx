@@ -2,28 +2,28 @@ import React from 'react';
 import './App.css';
 import Navbar from './component/navbar/Navbar';
 import Footer from './component/footer/Footer';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import About from './pages/about/About';
-import Portfolio from './pages/portfolio/Portfolio';
-import Contact from './pages/contact/Contact';
+import Portfolio from './pages/portfolio/Portfolio'; 
+import Contact from './pages/contact/Contact'; 
 import Layout from './component/layout/Layout';
 import NotFound from './pages/notfound/Notfound';
 import Home from './pages/home/Home';
 
+const router = createBrowserRouter([
+  {path: '', element: <Layout />,
+  children: [
+      { index: true , element: <Home /> },
+      { path: 'about', element: <About /> },
+      { path: 'portfolio', element: <Portfolio /> },
+      { path: 'contact', element: <Contact /> },
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+]);
+
 function App() {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="portfolio" element={<Portfolio />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </HashRouter>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
