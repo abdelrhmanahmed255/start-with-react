@@ -1,0 +1,12 @@
+
+.main-content {
+    padding-top: 70px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: calc(100vh - 100px );  */
+  }
+  .active{
+    background-color: #1abc9c;
+  }
+  
